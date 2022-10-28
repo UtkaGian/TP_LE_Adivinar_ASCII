@@ -1,21 +1,21 @@
 #include <stdio.h>
+#include <stdio_ext.h>
 
 void Adivinar_ASCII (char caracter);
 
 int main()
 {
     char caracter, decision;
-    int basura;
 	printf("\nBienvenido a nuestro programa...\n");
     do
     {
         printf("Ingrese un caracter\n>>> ");
-        scanf("%d", &basura);
+        __fpurge(stdin);
         scanf("%c", &caracter);
         printf("Ahora deberas adivinar el valor correspondiente en codigo ASCII\n");
         Adivinar_ASCII(caracter);
         printf("Desea jugar nuevamente? [S/N]\n>>> ");
-        scanf("%d", &basura);
+        __fpurge(stdin);
         scanf("%c", &decision);
 		printf("\n");		
     } while ((decision == 's') || (decision == 'S'));
@@ -30,6 +30,7 @@ void Adivinar_ASCII (char caracter)
     {
         printf(">>> ");
         scanf("%d", &ASCII);
+        __fpurge(stdin);
 		intentos++;
         if (caracter < ASCII)
         {
@@ -52,4 +53,5 @@ void Adivinar_ASCII (char caracter)
 	}
 	printf("El valor correspondiente de [ %c ]  en la tabla ASCII es %d o 0x%x\n", caracter, ASCII, ASCII);
 }
+
 
